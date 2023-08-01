@@ -1,0 +1,6 @@
+Django==4.2.3
+pre-commit==3.3.3
+ipython==8.14.0
+pytest-cov==4.1.0
+pytest-django==4.5.2
+pytest-sugar==0.9.7
