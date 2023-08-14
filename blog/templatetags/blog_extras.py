@@ -17,13 +17,9 @@ def author_details(author: User, current_user: Optional[User] = None):
     if author == current_user:
         return format_html("<strong>me</strong>")
 
-    if author.first_name and author.last_name:
-        name = f"{author.first_name} {author.last_name}"
-    else:
-        name = f"{author.username}"
+    name = author.get_full_name() or author.username
 
-    if author.email:
-        email = author.email
+    if email := author.email:
         return format_html('<a href="mailto:{}">{}</a>', email, name)
 
     return name
