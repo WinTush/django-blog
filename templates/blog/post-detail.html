@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load blog_extras %}
 {% block content %}
     <h2>{{ post.title }}</h2>
     <article class="row">
@@ -9,6 +10,11 @@
     <article class="row">
         <section class="col">
             {{ post.content|safe }}
+        </section>
+    </article>
+    <article class="row">
+        <section class="col">
+            {% recent_posts post %}
         </section>
     </article>
 {% endblock content %}
