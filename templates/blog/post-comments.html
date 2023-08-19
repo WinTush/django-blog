@@ -1,0 +1,27 @@
+{% load blog_extras crispy_forms_tags %}
+{% for comment in post.comments.all %}
+    <article class="row border-top pt-2">
+        <section class="col">
+            <h5>Posted by {{ comment.creator }} at {{ comment.created_at|date:"M, d Y h:i" }}</h5>
+        </section>
+    </article>
+    <article class="row border-bottom">
+        <section class="col">
+            <p>{{ comment.content }}</p>
+        </section>
+    </article>
+    {% empty %}
+    <article class="row border-bottom border-top">
+        <section class="col">
+            <p>No comments.</p>
+        </section>
+    </article>
+{% endfor %}
+{% if request.user.is_active %}
+    <article class="row mt-4">
+        <section class="col">
+            <h4>Add Comment</h4>
+            {% crispy comment_form %}
+        </section>
+    </article>
+{% endif %}
